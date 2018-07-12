@@ -38,11 +38,17 @@
                 android:layout_weight="1"
                 android:text="Delete"/>
         </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/back"
+            android:text="BACK"/>
     </LinearLayout>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/panel"
-        android:id="@+id/passlist"></ListView>
+        android:id="@+id/passlist"
+        android:longClickable="true"></ListView>
 </RelativeLayout>
 

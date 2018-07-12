@@ -1,9 +1,13 @@
 package com.example.tomek.passwordgenerator;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,12 +18,14 @@ import android.widget.Toast;
 
 import com.example.tomek.passwordgenerator.Helper.DBHelper;
 
+import static com.example.tomek.passwordgenerator.Helper.DBHelper.TABLE_NAME;
+
 /**
  * Created by Tomek on 11.07.2018.
  */
 
 public class Bank extends AppCompatActivity {
-    Button btnAdd,btnUpdate,btnDelete;
+    Button btnAdd,btnUpdate,btnDelete,back;
     EditText website;
     ListView passlist;
     String saveWebsite="";
@@ -30,6 +36,9 @@ public class Bank extends AppCompatActivity {
         setContentView(R.layout.bank);
         Intent intent = getIntent();
         final String  value = intent.getStringExtra("key");
+        String mySum = addition1(value);
+
+
         //net.sqlcipher.database.SQLiteDatabase.loadLibs(this);
         net.sqlcipher.database.SQLiteDatabase.loadLibs(this);
 
@@ -42,13 +51,14 @@ public class Bank extends AppCompatActivity {
                 website.setText(item);
                 saveWebsite=item;
 
-
             }
         });
         website=(EditText)findViewById(R.id.website);
         btnAdd=(Button)findViewById(R.id.btnadd);
         btnUpdate=(Button)findViewById(R.id.btnupdate);
         btnDelete=(Button)findViewById(R.id.btndelete);
+        back=(Button)findViewById(R.id.back);
+        passlist=(ListView)findViewById(R.id.passlist);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,9 +84,30 @@ public class Bank extends AppCompatActivity {
 
             }
         });
-        reload();
-    }
+        passlist.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long id) {
 
+                Log.v("long clicked","pos: " + pos);
+//                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+//                ClipData clip = ClipData.newPlainText("password", genreSelected,null)));
+//                clipboard.setPrimaryClip(clip);
+                return true;
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        reload();
+
+    }
+    public String addition1 (String vvv) {
+        return vvv;
+    }
     private void reload() {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,

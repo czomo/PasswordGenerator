@@ -25,7 +25,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_PASS="password";
     public static final String PASS_PHARSE="12345";
 
-    private static final String SQL_CREATE_TABLE_QUERY="CREATE TABLE "+TABLE_NAME+" ("+COLUMN_WEBSITE+" TEXT PRIMARY KEY)";
+    private static final String SQL_CREATE_TABLE_QUERY="CREATE TABLE "+TABLE_NAME+" ("+COLUMN_WEBSITE+" TEXT PRIMARY KEY, "+COLUMN_PASS+" TEXT)";
     //+COLUMN_PASS+"TEXT)"
     private static final String SQL_DELETE_TABLE_QUERY="DROP TABLE IF EXISTS "+TABLE_NAME;
 
@@ -52,8 +52,9 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db =instance.getWritableDatabase(PASS_PHARSE);
         ContentValues values=new ContentValues();
         values.put(COLUMN_WEBSITE,website);
-       // values.put(COLUMN_PASS, PASS_PHARSE);
+        values.put(COLUMN_PASS,PASS_PHARSE);
         db.insert(TABLE_NAME,null,values);
+
         db.close();
     }
     public void updateWebsite(String oldWebsite,String  newwebsite){
@@ -88,4 +89,5 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
         return web;
     }
+
 }
