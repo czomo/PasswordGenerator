@@ -64,7 +64,6 @@ public class Bank extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = getIntent();
-                //String  value = intent.getStringExtra("key");
                 mySum = intent.getStringExtra("key");
                 DBHelper.getInstance(Bank.this).insertWebsite(website.getText().toString());
                 reload();
@@ -73,7 +72,9 @@ public class Bank extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DBHelper.getInstance(Bank.this).updateWebsite(saveWebsite, website.getText().toString());
+                Intent intent = getIntent();
+                mySum = intent.getStringExtra("key");
+                DBHelper.getInstance(Bank.this).updateWebsite(saveWebsite, website.getText().toString(), mySum);
                 reload();
                 Toast.makeText(getApplicationContext(), "Updated!", Toast.LENGTH_SHORT).show();
             }
@@ -83,7 +84,7 @@ public class Bank extends AppCompatActivity {
             public void onClick(View v) {
                 DBHelper.getInstance(Bank.this).deleteWebsite(website.getText().toString());
                 reload();
-                //Toast.makeText(getApplicationContext(),"Deleted!" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Deleted!", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -94,7 +95,7 @@ public class Bank extends AppCompatActivity {
                 Log.v("long clicked", "pos: " + pos);
                 Toast.makeText(getApplicationContext(), "Copied to clippboard!", Toast.LENGTH_SHORT).show();
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("password", DBHelper.toCopy(( (TextView) arg1 ).getText().toString()));
+                ClipData clip = ClipData.newPlainText("password", DBHelper.toCopy(((TextView) arg1).getText().toString()));
                 clipboard.setPrimaryClip(clip);
                 return true;
             }

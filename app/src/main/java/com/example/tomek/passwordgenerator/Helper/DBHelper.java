@@ -2,7 +2,6 @@ package com.example.tomek.passwordgenerator.Helper;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.widget.AdapterView;
 
 import com.example.tomek.passwordgenerator.Bank;
 
@@ -39,6 +38,22 @@ public class DBHelper extends SQLiteOpenHelper {
         return instance;
     }
 
+    public static String toCopy(String dataTocCopy) {
+        String word = "";
+        SQLiteDatabase db = instance.getWritableDatabase(PASS_PHARSE);
+        //Cursor cursor = db.rawQuery(String.format(("SELECT "+COLUMN_PASS+" FROM '%s' WHERE " +COLUMN_WEBSITE+"="+dataTocCopy+";"), TABLE_NAME), null);
+        //        Cursor cursor = db.rawQuery(String.format(("SELECT * FROM '%s' WHERE "+COLUMN_WEBSITE+"='"+dataTocCopy+"';"), TABLE_NAME), null);
+        Cursor cursor = db.rawQuery(String.format(("SELECT * FROM '%s' WHERE " + COLUMN_WEBSITE + "='" + dataTocCopy + "';"), TABLE_NAME), null);
+        if (cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
+                word = cursor.getString((cursor.getColumnIndex(COLUMN_PASS)));
+                cursor.moveToNext();
+            }
+        }
+        cursor.close();
+        db.close();
+        return word;
+    }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
@@ -61,11 +76,11 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void updateWebsite(String oldWebsite, String newwebsite) {
+    public void updateWebsite(String oldWebsite, String newwebsite, String newpass) {
         SQLiteDatabase db = instance.getWritableDatabase(PASS_PHARSE);
         ContentValues values = new ContentValues();
         values.put(COLUMN_WEBSITE, newwebsite);
-        //values.put(COLUMN_PASS, PASS_PHARSE);
+        values.put(COLUMN_PASS, newpass);
         db.update(TABLE_NAME, values, COLUMN_WEBSITE + "='" + oldWebsite + "'", null);
         db.close();
     }
@@ -77,22 +92,6 @@ public class DBHelper extends SQLiteOpenHelper {
         //values.put(COLUMN_PASS, PASS_PHARSE);
         db.delete(TABLE_NAME, COLUMN_WEBSITE + "='" + website + "'", null);
         db.close();
-    }
-    public static String toCopy(String dataTocCopy){
-        String word="";
-        SQLiteDatabase db = instance.getWritableDatabase(PASS_PHARSE);
-        //Cursor cursor = db.rawQuery(String.format(("SELECT "+COLUMN_PASS+" FROM '%s' WHERE " +COLUMN_WEBSITE+"="+dataTocCopy+";"), TABLE_NAME), null);
-        //        Cursor cursor = db.rawQuery(String.format(("SELECT * FROM '%s' WHERE "+COLUMN_WEBSITE+"='"+dataTocCopy+"';"), TABLE_NAME), null);
-        Cursor cursor = db.rawQuery(String.format(("SELECT * FROM '%s' WHERE "+COLUMN_WEBSITE+"='"+dataTocCopy+"';"), TABLE_NAME), null);
-        if (cursor.moveToFirst()) {
-            while (!cursor.isAfterLast()) {
-                 word=cursor.getString((cursor.getColumnIndex(COLUMN_PASS)));
-                cursor.moveToNext();
-            }
-        }
-        cursor.close();
-        db.close();
-        return word;
     }
 
     public List<String> getAll() {
