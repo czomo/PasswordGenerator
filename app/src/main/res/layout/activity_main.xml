@@ -1,89 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.tomek.passwordgenerator.MainActivity">
+
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fadeScrollbars="false"
-        android:fillViewport="true" >
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:fillViewport="true">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Password Lenght" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <SeekBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/seekbar"
-            android:progress="4"
-            />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Password Lenght" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pass lenght"
-            android:id="@+id/seektext"
-            />
-        <Switch
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Only numbers"
-            android:id="@+id/numbersOnly"/>
-        <Switch
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Uppercase"
-            android:id="@+id/uppercase"/>
+            <SeekBar
+                android:id="@+id/seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progress="4" />
 
-        <Switch
-            android:id="@+id/numbers"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Numbers + Letters" />
+            <TextView
+                android:id="@+id/seektext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pass lenght" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Special characters" />
+            <Switch
+                android:id="@+id/numbersOnly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Only numbers" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/specchar"
-            />
+            <Switch
+                android:id="@+id/uppercase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Uppercase" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/passwordbtn"
-            android:text="Generate password"/>
+            <Switch
+                android:id="@+id/numbers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Numbers + Letters" />
 
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="yours password" />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/passwordcopy"
-            android:text="COPY TO CLIPBOARD"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/passwordsave"
-            android:text="SAVE PASSWORD"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Special characters" />
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/specchar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false" />
+
+            <Button
+                android:id="@+id/passwordbtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Generate password" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:text="yours password" />
+
+            <Button
+                android:id="@+id/passwordcopy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="COPY TO CLIPBOARD" />
+
+            <Button
+                android:id="@+id/passwordsave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SAVE PASSWORD" />
+
+        </LinearLayout>
     </ScrollView>
 
 
