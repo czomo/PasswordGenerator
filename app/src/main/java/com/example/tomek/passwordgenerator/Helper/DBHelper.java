@@ -23,7 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "STORE";
     public static final String COLUMN_WEBSITE = "website";
     public static final String COLUMN_PASS = "password";
-    public static final String PASS_PHARSE = "12345";
+    public static final String PASS_PHARSE = Installation.class.toString();
     private static final int DATABASE_VER = 1;
     private static final String SQL_CREATE_TABLE_QUERY = "CREATE TABLE " + TABLE_NAME + " (" + COLUMN_WEBSITE + " TEXT PRIMARY KEY, " + COLUMN_PASS + " TEXT)";
     private static final String SQL_DELETE_TABLE_QUERY = "DROP TABLE IF EXISTS " + TABLE_NAME;
@@ -41,8 +41,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public static String toCopy(String dataTocCopy) {
         String word = "";
         SQLiteDatabase db = instance.getWritableDatabase(PASS_PHARSE);
-        //Cursor cursor = db.rawQuery(String.format(("SELECT "+COLUMN_PASS+" FROM '%s' WHERE " +COLUMN_WEBSITE+"="+dataTocCopy+";"), TABLE_NAME), null);
-        //        Cursor cursor = db.rawQuery(String.format(("SELECT * FROM '%s' WHERE "+COLUMN_WEBSITE+"='"+dataTocCopy+"';"), TABLE_NAME), null);
         Cursor cursor = db.rawQuery(String.format(("SELECT * FROM '%s' WHERE " + COLUMN_WEBSITE + "='" + dataTocCopy + "';"), TABLE_NAME), null);
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {

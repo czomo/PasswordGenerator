@@ -37,9 +37,6 @@ public class Bank extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bank);
-
-
-        //net.sqlcipher.database.SQLiteDatabase.loadLibs(this);
         net.sqlcipher.database.SQLiteDatabase.loadLibs(this);
 
 
