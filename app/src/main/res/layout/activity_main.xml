@@ -19,7 +19,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Password Lenght" />
+                android:text="@string/textLen" />
 
             <SeekBar
                 android:id="@+id/seekbar"
@@ -31,61 +31,63 @@
                 android:id="@+id/seektext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pass lenght" />
+                android:text="@string/textLen2" />
 
             <Switch
                 android:id="@+id/numbersOnly"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Only numbers" />
+                android:text="@string/swiNum" />
 
             <Switch
                 android:id="@+id/uppercase"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Uppercase" />
+                android:text="@string/swiUpp" />
 
             <Switch
                 android:id="@+id/numbers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Numbers + Letters" />
+                android:text="@string/swiUandL" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Special characters" />
+                android:text="@string/swiSpe" />
 
             <EditText
                 android:id="@+id/specchar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusableInTouchMode="true"/>
+                android:windowSoftInputMode="stateHidden"
+
+                />
 
             <Button
                 android:id="@+id/passwordbtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Generate password" />
+                android:text="@string/butGen" />
 
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:focusableInTouchMode="true"
-                android:text="yours password" />
+                android:text="@string/ediPas" />
 
             <Button
                 android:id="@+id/passwordcopy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="COPY TO CLIPBOARD" />
+                android:text="@string/butCop" />
 
             <Button
                 android:id="@+id/passwordsave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SAVE PASSWORD" />
+                android:text="@string/butSav" />
 
         </LinearLayout>
     </ScrollView>

@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">PasswordGenerator</string>
+    <string name="textLen">Password length</string>
+    <string name="textLen2">Pass length</string>
+    <string name="swiNum">Only numbers</string>
+    <string name="swiUpp">Uppercase</string>
+    <string name="swiUandL">Numbers + Letters</string>
+    <string name="swiSpe">Special characters</string>
+    <string name="butGen">Generate password</string>
+    <string name="ediPas">Your\'s password</string>
+    <string name="butCop">Copy to clipboard</string>
+    <string name="butSav">Save password</string>
+    <string name="butAdd">Add</string>
+    <string name="butUpt">Update</string>
+    <string name="butDel">Delete</string>
+    <string name="butBac">Back</string>
+    <string name="ediweb">Website</string>
+
 </resources>

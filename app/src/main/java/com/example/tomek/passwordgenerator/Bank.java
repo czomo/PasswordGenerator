@@ -18,9 +18,7 @@ import android.widget.Toast;
 
 import com.example.tomek.passwordgenerator.Helper.DBHelper;
 
-/**
- * Created by Tomek on 11.07.2018.
- */
+
 
 public class Bank extends AppCompatActivity {
     static String mySum = "";
@@ -64,6 +62,7 @@ public class Bank extends AppCompatActivity {
                 mySum = intent.getStringExtra("key");
                 DBHelper.getInstance(Bank.this).insertWebsite(website.getText().toString());
                 reload();
+                Toast.makeText(getApplicationContext(), "Added!", Toast.LENGTH_SHORT).show();
             }
         });
         btnUpdate.setOnClickListener(new View.OnClickListener() {
