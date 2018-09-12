@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -80,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
                 if (seekBar.getProgress() < 4) {
                     Toast.makeText(getApplicationContext(), "For your safety please choose longer password", Toast.LENGTH_SHORT).show();
                 } else {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(password.getWindowToken(), 0);
                     password.setText(genereatePass(seekBar.getProgress()));
                 }
             }
